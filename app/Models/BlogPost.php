@@ -10,4 +10,9 @@ class BlogPost extends Model
 {
     use SoftDeletes;
     use HasFactory;
+
+//    protected $dates
+//    =[
+//        'published_at'
+//    ];
 }
