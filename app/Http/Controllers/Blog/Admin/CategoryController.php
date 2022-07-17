@@ -31,7 +31,7 @@ class CategoryController extends BaseController
     {
         //$paginator = BlogCategory::paginate(5);
 
-        $paginator = $this->blogCategoryRepository->getAllWithPaginate(5);
+        $paginator = $this->blogCategoryRepository->getAllWithPaginate(25);
 
         return view('blog.admin.categories.index', compact('paginator'));
     }
@@ -58,10 +58,11 @@ class CategoryController extends BaseController
      */
     public function store(BlogCategoryCreateRequest $request)
     {
-        $data = $request->input();
-        if (empty($data['slug'])){
-            $data['slug'] = Str::of($data['title'])->slug();
-        }
+        // ушло в обсервер
+//        $data = $request->input();
+//        if (empty($data['slug'])){
+//            $data['slug'] = Str::of($data['title'])->slug();
+//        }
         //создаст объект но не добавит в бд                   Variant 1
 //        $item = new BlogCategory($data);
 //        $item->save();
@@ -106,7 +107,7 @@ class CategoryController extends BaseController
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  BlogCategoryUpdateRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -140,9 +141,10 @@ class CategoryController extends BaseController
         }
 
         $data = $request->all();
-        if (empty($data['slug'])){
-            $data['slug'] = Str::of($data['title'])->slug();
-        }
+        // ушло в обсервер
+//        if (empty($data['slug'])){
+//            $data['slug'] = Str::of($data['title'])->slug();
+//        }
 
         $result = $item->update($data);
 
