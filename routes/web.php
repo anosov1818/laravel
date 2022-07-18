@@ -27,6 +27,11 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::group(['prefix' => 'digging_deeper',], function (){
+    Route::get('collections', [\App\Http\Controllers\DiggingDeeperController::class, 'collections'])
+        ->name('digging_deeper.collections');
+});
+
 //>Админка блога
 $groupData = [
     'namespace' => 'App\Http\Controllers\Blog\Admin',
